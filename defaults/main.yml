@@ -1,5 +1,5 @@
 ---
-syslog_default_logfiles:
+syslog_logfiles_default:
   - {file: "/var/cron/log", user: "root", group: "wheel", mode: "600", count: 3, size: 10}
   - {file: "/var/log/authlog", user: "root", group: "wheel", size: "*", when: "168"}
   - {file: "/var/log/daemon", count: 5}
@@ -11,4 +11,4 @@ syslog_default_logfiles:
   - {file: "/var/log/xferlog", size: "250"}
   - {file: "/var/log/pflog", mode: "600", count: 3, size: "250", flags: "ZB", command: "pkill -HUP -u root -U root -t - -x pflogd"}
 
-syslog_extra_logfiles: []
+syslog_logfiles_extra: []
