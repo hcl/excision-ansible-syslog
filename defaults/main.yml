@@ -11,4 +11,9 @@ syslog_logfiles_default:
   - {file: "/var/log/xferlog", size: "250"}
   - {file: "/var/log/pflog", mode: "600", count: 3, size: "250", flags: "ZB", command: "pkill -HUP -u root -U root -t - -x pflogd"}
 
+syslog_logfiles_service:
+  - {file: "/var/www/log/access.log", mode: "644", count: 4, size: "*", when: "$W0", flags: "Z", command: "pkill -USR1 -u root -U root -x nginx"}
+  - {file: "/var/www/log/error.log", mode: "644", count: 7, size: "250", when: "*", flags: "Z", command: "pkill -USR1 -u root -U root -x nginx"}
+  - {file: "/var/log/rspamd/rspamd.log", user: "_rspamd", group: "_rspamd", mode: "640", count: 1, size: "300", when: "*", flags: "Z", command: "pkill -USR1 -u _rspamd -U _rspamd -x rspamd"}
+
 syslog_logfiles_extra: []
