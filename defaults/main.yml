@@ -17,3 +17,5 @@ syslog_logfiles_service:
   - {file: "/var/log/rspamd/rspamd.log", user: "_rspamd", group: "_rspamd", mode: "640", count: 1, size: "300", when: "*", flags: "Z", command: "pkill -USR1 -u _rspamd -U _rspamd -x rspamd"}
 
 syslog_logfiles_extra: []
+
+syslog_logfiles: "{{ syslog_logfiles_default + syslog_logfiles_service + syslog_logfiles_extra }}"
